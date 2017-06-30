@@ -1,3 +1,5 @@
+package hw2;
+
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.Connection;

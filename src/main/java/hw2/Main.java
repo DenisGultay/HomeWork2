@@ -16,6 +16,9 @@ public class Main {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
+
+
+
     public static void main(String[] args) {
 
         Connection connection;

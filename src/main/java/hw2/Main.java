@@ -1,36 +1,29 @@
 package hw2;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
+import hw2.dao.impl.CompanyDAOImp;
+import hw2.entityes.Company;
 
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Користувач on 29.06.2017.
  */
 public class Main {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/homework1";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
-
-
-
+    private static int count = 2;
     public static void main(String[] args) {
 
-        Connection connection;
+        CompanyDAOImp companyDAOImp = new CompanyDAOImp();
+        Company company = getCompanyInstance();
+        companyDAOImp.insert(company);
+    }
 
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException e) {
-            System.out.println("Driver not connect");
-        }
-
+    static Company getCompanyInstance(){
+        return new Company("Oracle" + count);
     }
 }

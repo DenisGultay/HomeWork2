@@ -17,6 +17,12 @@ public class Company {
     private Set<Projects> projects = new HashSet<Projects>();
     private Set<Persons> persons = new HashSet<Persons>();
 
+    public Company(String companyName) {
+    }
+
+    public Company() {
+    }
+
     public int getCompanyId() {
         return companyId;
     }

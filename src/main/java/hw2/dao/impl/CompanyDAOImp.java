@@ -34,7 +34,7 @@ public class CompanyDAOImp implements CompanyDAO {
     }
 
     public Company findById(int companyId) {
-             Company company = null;
+        Company company = null;
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_ID)) {
             ps.setInt(1, companyId);
@@ -84,7 +84,14 @@ public class CompanyDAOImp implements CompanyDAO {
     }
 
     public void update(Company company) {
-
+        try (Connection connection = DataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE)) {
+            statement.setString(1, company.getCompanyName());
+            statement.setInt(2, company.getCompanyId());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new DatabaseExcept(e);
+        }
     }
 
     public void delete(Company company) {

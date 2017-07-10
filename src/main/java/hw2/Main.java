@@ -15,15 +15,17 @@ import java.util.List;
  */
 public class Main {
 
-    private static int count = 2;
+    //   private static int count = 2;
     public static void main(String[] args) {
 
         CompanyDAOImp companyDAOImp = new CompanyDAOImp();
         Company company = getCompanyInstance();
         companyDAOImp.insert(company);
-    }
 
-    static Company getCompanyInstance(){
-        return new Company("Oracle" + count);
+   }
+
+    static Company getCompanyInstance() {
+        return new Company("company");
     }
 }
+

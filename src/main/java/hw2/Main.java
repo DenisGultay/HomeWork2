@@ -19,13 +19,13 @@ public class Main {
     public static void main(String[] args) {
 
         CompanyDAOImp companyDAOImp = new CompanyDAOImp();
-        Company company = getCompanyInstance();
-        companyDAOImp.insert(company);
+//        Company company = getCompanyInstance();
+        companyDAOImp.delete(5);
 
    }
 
-    static Company getCompanyInstance() {
-        return new Company("company");
-    }
+ //   static Company getCompanyInstance() {
+ //       return new Company("");
+ //   }
 }
 

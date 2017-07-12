@@ -94,7 +94,15 @@ public class CompanyDAOImp implements CompanyDAO {
         }
     }
 
-    public void delete(Company company) {
+    public void delete(int companyId) {
+            try (Connection connection = DataSource.getConnection();
+                 PreparedStatement ps = connection.prepareStatement(SQL_DELETE)) {
+                ps.setInt(1, companyId);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                throw new DatabaseExcept(e);
+
+        }
 
     }
 }

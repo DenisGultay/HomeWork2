@@ -18,6 +18,7 @@ public class Company {
     private Set<Persons> persons = new HashSet<Persons>();
 
     public Company(String companyName) {
+        this.companyName = companyName;
     }
 
     public Company() {

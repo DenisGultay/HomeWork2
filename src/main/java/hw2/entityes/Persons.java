@@ -24,6 +24,8 @@ public class Persons {
     private Set<Skills> skills = new HashSet<Skills>();
 
 
+
+
     public int getPersonsId() {
         return personsId;
     }

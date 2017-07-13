@@ -21,5 +21,5 @@ public interface SkillsDAO {
     public Skills findByName(String skillsName);
     public void insert(Skills skills);
     public void update(Skills skills);
-    public void delete(Skills skills);
+    public void delete(int skillsId);
 }

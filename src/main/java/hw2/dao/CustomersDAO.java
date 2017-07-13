@@ -22,5 +22,5 @@ public interface CustomersDAO {
     public Customers findByName(String customersName);
     public void insert(Customers customers);
     public void update(Customers customers);
-    public void delete(Customers customers);
+    public void delete(int customersId);
 }

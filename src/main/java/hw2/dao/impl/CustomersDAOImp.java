@@ -2,31 +2,30 @@ package hw2.dao.impl;
 
 import hw2.DataSource;
 import hw2.Exeptions.DatabaseExcept;
-import hw2.dao.CompanyDAO;
-import hw2.entityes.Company;
+import hw2.dao.CustomersDAO;
+import hw2.entityes.Customers;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Користувач on 03.07.2017.
+ * Created by Користувач on 13.07.2017.
  */
-public class CompanyDAOImp implements CompanyDAO {
+public class CustomersDAOImp implements CustomersDAO {
 
     @Override
-    public List<Company> findAll() {
-
-        List<Company> result = new ArrayList<Company>();
+    public List<Customers> findAll() {
+        List<Customers> result = new ArrayList<Customers>();
 
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_FIND_ALL)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Company company = new Company();
-                company.setCompanyId(rs.getInt(Company.ID));
-                company.setCompanyName(rs.getString(Company.NAME));
-                result.add(company);
+                Customers customers = new Customers();
+                customers.setCustomersId(rs.getInt(Customers.ID));
+                customers.setCustomersName(rs.getString(Customers.NAME));
+                result.add(customers);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,52 +34,52 @@ public class CompanyDAOImp implements CompanyDAO {
     }
 
     @Override
-    public Company findById(int companyId) {
-        Company company = null;
+    public Customers findById(int customersId) {
+        Customers customers = null;
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_ID)) {
-            ps.setInt(1, companyId);
-            company = new Company();
+            ps.setInt(1, customersId);
+            customers = new Customers();
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    company.setCompanyId(rs.getInt(Company.ID));
-                    company.setCompanyName(rs.getString(Company.NAME));
+                    customers.setCustomersId(rs.getInt(Customers.ID));
+                    customers.setCustomersName(rs.getString(Customers.NAME));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return company;
+        return customers;
     }
 
     @Override
-    public Company findByName(String companyName) {
-        Company company = null;
+    public Customers findByName(String customersName) {
+        Customers customers = null;
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_NAME)) {
-            ps.setString(1, companyName);
-            company = new Company();
+            ps.setString(1, customersName);
+            customers = new Customers();
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    company.setCompanyId(rs.getInt(Company.ID));
-                    company.setCompanyName(rs.getString(Company.NAME));
+                    customers.setCustomersId(rs.getInt(Customers.ID));
+                    customers.setCustomersName(rs.getString(Customers.NAME));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return company;
+        return customers;
     }
 
     @Override
-    public void insert(Company company) {
+    public void insert(Customers customers) {
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, company.getCompanyName());
+            ps.setString(1, customers.getCustomersName());
             ps.execute();
             ResultSet generatedkeys = ps.getGeneratedKeys();
             if (generatedkeys.next()) {
-                company.setCompanyId(generatedkeys.getInt(1));
+                customers.setCustomersId(generatedkeys.getInt(1));
             }
         } catch (SQLException e) {
             throw new DatabaseExcept(e);
@@ -88,11 +87,11 @@ public class CompanyDAOImp implements CompanyDAO {
     }
 
     @Override
-    public void update(Company company) {
+    public void update(Customers customers) {
         try (Connection connection = DataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE)) {
-            statement.setString(1, company.getCompanyName());
-            statement.setInt(2, company.getCompanyId());
+            statement.setString(1, customers.getCustomersName());
+            statement.setInt(2, customers.getCustomersId());
             statement.execute();
         } catch (SQLException e) {
             throw new DatabaseExcept(e);
@@ -100,14 +99,13 @@ public class CompanyDAOImp implements CompanyDAO {
     }
 
     @Override
-    public void delete(int companyId) {
+    public void delete(int customersId) {
         try (Connection connection = DataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_DELETE)) {
-            ps.setInt(1, companyId);
+            ps.setInt(1, customersId);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new DatabaseExcept(e);
-
         }
     }
 }

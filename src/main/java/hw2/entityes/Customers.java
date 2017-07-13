@@ -16,6 +16,13 @@ public class Customers {
     private String customersName;
     private Set<Projects> projects = new HashSet<Projects>();
 
+    public Customers(String customersName) {
+        this.customersName = customersName;
+    }
+
+    public Customers() {
+    }
+
     public int getCustomersId() {
         return customersId;
     }

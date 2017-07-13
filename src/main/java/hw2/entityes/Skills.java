@@ -16,6 +16,13 @@ public class Skills {
     private String skillsName;
     private Set<Persons> persons = new HashSet<Persons>();
 
+    public Skills(String skillsName) {
+        this.skillsName = skillsName;
+    }
+
+    public Skills() {
+    }
+
     public int getSkillsId() {
         return skillsId;
     }

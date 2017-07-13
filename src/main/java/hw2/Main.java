@@ -2,6 +2,7 @@ package hw2;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import hw2.dao.impl.CompanyDAOImp;
+import hw2.dao.impl.SkillsDAOImp;
 import hw2.entityes.Company;
 
 import java.sql.Connection;
@@ -18,10 +19,11 @@ public class Main {
     //   private static int count = 2;
     public static void main(String[] args) {
 
-        CompanyDAOImp companyDAOImp = new CompanyDAOImp();
+//        CompanyDAOImp companyDAOImp = new CompanyDAOImp();
+        SkillsDAOImp skillsDAOImp = new SkillsDAOImp();
 //        Company company = getCompanyInstance();
-        companyDAOImp.delete(5);
-
+//        companyDAOImp.delete(5);
+        System.out.println(skillsDAOImp.findByName("Java"));
    }
 
  //   static Company getCompanyInstance() {

@@ -24,7 +24,14 @@ public class Persons {
     private Set<Skills> skills = new HashSet<Skills>();
 
 
+    public Persons(int personsId, String personsName, int personsAge) {
+        this.personsId = personsId;
+        this.personsName = personsName;
+        this.personsAge = personsAge;
+    }
 
+    public Persons() {
+    }
 
     public int getPersonsId() {
         return personsId;

@@ -24,7 +24,7 @@ public interface PersonsDAO {
     public Persons findByName(String personsName);
     public Persons findByAge(int personsAge);
     public Persons findByCompanyId(int companyId);
-    public Persons findBySalary(int salary);
+    public List<Persons> findBySalary(int salary);
     public void insert(Persons persons);
     public void update(Persons persons);
     public void delete(Persons persons);

@@ -25,7 +25,7 @@ public class Main {
 //        SkillsDAOImp skillsDAOImp = new SkillsDAOImp();
 //        Company company = getCompanyInstance();
 //        companyDAOImp.delete(5);
-        System.out.println(personsDAOImp.findById(3));
+        System.out.println(personsDAOImp.findBySalary(2000));
    }
 
  //   static Company getCompanyInstance() {

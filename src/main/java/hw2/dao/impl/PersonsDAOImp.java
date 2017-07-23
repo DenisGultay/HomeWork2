@@ -83,17 +83,68 @@ public class PersonsDAOImp implements PersonsDAO {
 
     @Override
     public Persons findByAge(int personsAge) {
-        return null;
+        Persons persons = null;
+        try (Connection connection = DataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_AGE)) {
+            ps.setInt(1, personsAge);
+            persons = new Persons();
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    persons.setPersonsId(rs.getInt(Persons.ID));
+                    persons.setPersonsName(rs.getString(Persons.NAME));
+                    persons.setPersonsAge(rs.getInt(Persons.AGE));
+                    persons.setCompanyId(rs.getInt(Persons.COMPANY_ID));
+                    persons.setSalary(rs.getInt(Persons.SALARY));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return persons;
     }
 
     @Override
     public Persons findByCompanyId(int companyId) {
-        return null;
+        Persons persons = null;
+        try (Connection connection = DataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_COMPANY_ID)) {
+            ps.setInt(1, companyId);
+            persons = new Persons();
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    persons.setPersonsId(rs.getInt(Persons.ID));
+                    persons.setPersonsName(rs.getString(Persons.NAME));
+                    persons.setPersonsAge(rs.getInt(Persons.AGE));
+                    persons.setCompanyId(rs.getInt(Persons.COMPANY_ID));
+                    persons.setSalary(rs.getInt(Persons.SALARY));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return persons;
     }
 
     @Override
-    public Persons findBySalary(int salary) {
-        return null;
+    public List<Persons> findBySalary(int salary) {
+        List<Persons> result = new ArrayList<Persons>();
+        try (Connection connection = DataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SQL_FIND_BY_SALARY)) {
+            ps.setInt(1, salary);
+           Persons persons = new Persons();
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    persons.setPersonsId(rs.getInt(Persons.ID));
+                    persons.setPersonsName(rs.getString(Persons.NAME));
+                    persons.setPersonsAge(rs.getInt(Persons.AGE));
+                    persons.setCompanyId(rs.getInt(Persons.COMPANY_ID));
+                    persons.setSalary(rs.getInt(Persons.SALARY));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

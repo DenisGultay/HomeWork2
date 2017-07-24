@@ -5,6 +5,7 @@ import hw2.dao.impl.CompanyDAOImp;
 import hw2.dao.impl.PersonsDAOImp;
 import hw2.dao.impl.SkillsDAOImp;
 import hw2.entityes.Company;
+import hw2.entityes.Persons;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -25,11 +26,20 @@ public class Main {
 //        SkillsDAOImp skillsDAOImp = new SkillsDAOImp();
 //        Company company = getCompanyInstance();
 //        companyDAOImp.delete(5);
-        System.out.println(personsDAOImp.findBySalary(2000));
-   }
+//        System.out.println(personsDAOImp.findBySalary(2000));
 
- //   static Company getCompanyInstance() {
- //       return new Company("");
- //   }
+//       Persons mark = getPersonsInstance();
+//        personsDAOImp.insert(mark);
+          personsDAOImp.delete(14);
+    }
+
+    //   static Company getCompanyInstance() {
+    //       return new Company("");
+    //   }
+    //
+
+//    static Persons getPersonsInstance() {
+//        return new Persons("Mark", 26);
+//    }
 }
 

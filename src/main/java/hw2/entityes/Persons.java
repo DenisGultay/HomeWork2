@@ -24,10 +24,11 @@ public class Persons {
     private Set<Skills> skills = new HashSet<Skills>();
 
 
-    public Persons(int personsId, String personsName, int personsAge) {
-        this.personsId = personsId;
+    public Persons(String personsName, int personsAge, int companyId, int salary) {
         this.personsName = personsName;
         this.personsAge = personsAge;
+        this.companyId = companyId;
+        this.salary = salary;
     }
 
     public Persons() {

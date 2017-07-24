@@ -27,5 +27,5 @@ public interface PersonsDAO {
     public List<Persons> findBySalary(int salary);
     public void insert(Persons persons);
     public void update(Persons persons);
-    public void delete(Persons persons);
+    public void delete(int personsId);
 }

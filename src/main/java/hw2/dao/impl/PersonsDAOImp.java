@@ -164,6 +164,21 @@ public class PersonsDAOImp implements PersonsDAO {
     }
 
     @Override
+    public void addSkillsToPersons(Persons person, int personId) throws Exception {
+        List<Integer> skillsId = person.getSkillsIDList();
+        if (skillsId != null) {
+            for (Integer skillId : skillsId) {
+                try (Connection connection = DataSource.getConnection();
+                     PreparedStatement ps = connection.prepareStatement(SQL_ADD_SKILLS_TO_PERSONS)) {
+                    ps.setInt(1, personId);
+                    ps.setInt(2, skillId);
+                    ps.executeUpdate();
+                }
+            }
+        }
+    }
+
+    @Override
     public void update(Persons persons) {
         try (Connection connection = DataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(SQL_UPDATE)) {

@@ -1,6 +1,7 @@
 package hw2.entityes;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ public class Skills {
 
     private int skillsId;
     private String skillsName;
-    private Set<Persons> persons = new HashSet<Persons>();
+    private List<Integer> personsIDList;
 
     public Skills(String skillsName) {
         this.skillsName = skillsName;
@@ -39,16 +40,18 @@ public class Skills {
         this.skillsName = skillsName;
     }
 
-    public Set<Persons> getPersons() {
-        return persons;
+    public List<Integer> getPersonsIDList() {
+        return personsIDList;
     }
 
-    public void setPersons(Set<Persons> persons) {
-        this.persons = persons;
+    public void setPersonsIDList(List<Integer> personsIDList) {
+        this.personsIDList = personsIDList;
     }
 
     @Override
     public String toString() {
         return "Skills[id=" + this.skillsId + ", name=" + this.skillsName + "]";
     }
+
+
 }

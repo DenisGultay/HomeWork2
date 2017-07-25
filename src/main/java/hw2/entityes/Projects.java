@@ -1,6 +1,7 @@
 package hw2.entityes;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class Projects {
     private int companyId;
     private int customersId;
     private int projectCost;
-    private Set<Persons> persons = new HashSet<Persons>();
+    private List<Integer> personsID;
 
     public int getProjectsId() {
         return projectsId;
@@ -62,12 +63,12 @@ public class Projects {
         this.customersId = customersId;
     }
 
-    public Set<Persons> getPersons() {
-        return persons;
+    public List<Integer> getPersonsID() {
+        return personsID;
     }
 
-    public void setPersons(Set<Persons> persons) {
-        this.persons = persons;
+    public void setPersonsID(List<Integer> personsID) {
+        this.personsID = personsID;
     }
 
     @Override

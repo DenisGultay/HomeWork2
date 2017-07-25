@@ -1,7 +1,9 @@
 package hw2.dao;
 
 import hw2.entityes.Persons;
+import hw2.entityes.Skills;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -16,6 +18,7 @@ public interface PersonsDAO {
     public static final String SQL_FIND_BY_COMPANY_ID = SQL_FIND_ALL + " where " + Persons.COMPANY_ID + " = ?";
     public static final String SQL_FIND_BY_SALARY = SQL_FIND_ALL + " where " + Persons.SALARY + " = ?";
     public static final String SQL_INSERT = "insert into " + Persons.TABLE_NAME + " (" + Persons.NAME + ", " + Persons.AGE + ", " + Persons.COMPANY_ID + ", " + Persons.SALARY + ") values (?,?,?,?)";
+    public static final String SQL_ADD_SKILLS_TO_PERSONS = "insert into " + Persons.PERSONS_SKILLS + " (persons_id, skills_id) values (? ,?)";
     public static final String SQL_UPDATE = "update " + Persons.TABLE_NAME + " set " + Persons.NAME + " = ?, " + Persons.AGE + " = ?, " + Persons.COMPANY_ID + " = ?, " + Persons.SALARY + " = ? where " + Persons.ID + " = ?";
     public static final String SQL_DELETE = "delete from " + Persons.TABLE_NAME + " where " + Persons.ID + " = ?";
 
@@ -26,6 +29,7 @@ public interface PersonsDAO {
     public Persons findByCompanyId(int companyId);
     public List<Persons> findBySalary(int salary);
     public void insert(Persons persons);
+    public void addSkillsToPersons (Persons person, int personId) throws Exception;
     public void update(Persons persons);
     public void delete(int personsId);
 }

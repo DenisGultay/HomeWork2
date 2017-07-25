@@ -4,13 +4,13 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import hw2.dao.impl.CompanyDAOImp;
 import hw2.dao.impl.PersonsDAOImp;
 import hw2.dao.impl.SkillsDAOImp;
-import hw2.entityes.Company;
-import hw2.entityes.Persons;
+import hw2.entityes.*;
 
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ import java.util.List;
 public class Main {
 
     //   private static int count = 2;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         PersonsDAOImp personsDAOImp = new PersonsDAOImp();
 //        CompanyDAOImp companyDAOImp = new CompanyDAOImp();
@@ -28,18 +28,34 @@ public class Main {
 //        companyDAOImp.delete(5);
 //        System.out.println(personsDAOImp.findBySalary(2000));
 
-//       Persons mark = getPersonsInstance();
-//        personsDAOImp.insert(mark);
-          personsDAOImp.delete(14);
+       Persons mark = getPersonsInstance();
+   //     personsDAOImp.insert(mark);
+        personsDAOImp.addSkillsToPersons(mark, 14);
     }
 
-    //   static Company getCompanyInstance() {
-    //       return new Company("");
-    //   }
-    //
+    static Company getCompanyInstance() {
+        return new Company("");
+    }
 
-//    static Persons getPersonsInstance() {
-//        return new Persons("Mark", 26);
-//    }
+    static Customers getCustomersInstance() {
+        return new Customers();
+    }
+
+    static Persons getPersonsInstance() {
+        List<Integer> skillIdList = Arrays.asList(new Integer[]{1, 2, 5});
+        Persons persons = new Persons("Mark", 26, 4,5200);
+        persons.setSkillsIDList(skillIdList);
+        return persons;
+    }
+
+    static Projects getProjectsInstance(){
+        return new Projects();
+    }
+
+    static Skills getSkillssInstance(){
+        return new Skills();
+    }
+
+
 }
 

@@ -14,14 +14,25 @@ public class Projects {
     public static final String NAME = "projects_name";
     public static final String COMPANY_ID = "company_id";
     public static final String CUSTOMERS_ID = "customers_id";
-    public static final String COSTS = "projects_costs";
+    public static final String COSTS = "projects_cost";
+    public static final String PERSONS_PROJECTS = "persons_projects";
 
     private int projectsId;
     private String projectsName;
     private int companyId;
     private int customersId;
     private int projectCost;
-    private List<Integer> personsID;
+    private List<Integer> personsIDList;
+
+    public Projects(String projectsName, int companyId, int customersId, int projectCost) {
+        this.projectsName = projectsName;
+        this.companyId = companyId;
+        this.customersId = customersId;
+        this.projectCost = projectCost;
+    }
+
+    public Projects() {
+    }
 
     public int getProjectsId() {
         return projectsId;
@@ -63,12 +74,12 @@ public class Projects {
         this.customersId = customersId;
     }
 
-    public List<Integer> getPersonsID() {
-        return personsID;
+    public List<Integer> getPersonsIDList() {
+        return personsIDList;
     }
 
-    public void setPersonsID(List<Integer> personsID) {
-        this.personsID = personsID;
+    public void setPersonsIDList(List<Integer> personsIDList) {
+        this.personsIDList = personsIDList;
     }
 
     @Override
